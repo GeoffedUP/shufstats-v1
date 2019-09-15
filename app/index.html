@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HeapWars.com Shuffle Monster Stats</title>
+
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+    <!-- HTML Meta Tags -->
+    <meta name="description" content="Shuffle Monster Token stats & Heap tracking tool.">
+
+    <meta property="og:site_name" content="HeapWars.com Shuffle Monster stats & tracker">
+    <meta property="og:image"
+        content="https://raw.githubusercontent.com/ShuffleMonster/mediapack/master/Main%20Hat%20Logo/hat-logo-transparent.png">
+    <meta property="og:description" content="Shuffle Monster Token stats & Heap tracking tools.">
+    <meta property="og:title" content="HeapWars.com">
+
+    <!-- Google / Search Engine Tags -->
+    <meta itemprop="name" content="HeapWars.com Shuffle Monster stats & tracker">
+    <meta itemprop="description" content="Shuffle Monster Token stats & Heap tracking tool.">
+    <meta itemprop="image"
+        content="https://raw.githubusercontent.com/ShuffleMonster/mediapack/master/Main%20Hat%20Logo/hat-logo-transparent.png">
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://HeapWars.com">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="HeapWars.com SHUF tracker">
+    <meta property="og:description" content="Shuffle Monster Token stats & Heap tracking tool.">
+    <meta property="og:image"
+        content="https://raw.githubusercontent.com/ShuffleMonster/mediapack/master/Main%20Hat%20Logo/hat-logo-transparent.png">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HeapWars.com SHUF tracker">
+    <meta name="twitter:description" content="Shuffle Monster Token stats & Heap tracking tool.">
+    <meta name="twitter:image"
+        content="https://raw.githubusercontent.com/ShuffleMonster/mediapack/master/Main%20Hat%20Logo/hat-logo-transparent.png">
+
+    <meta name="keywords"
+        content="SHUF, Deflationary, Deflationary Token, Shuffle Monster, Shuffle, Heap, ShuffleMonster, Tokenomics, ERC20, Token, Ethereum, ETH, Monster">
+
+    <link rel="icon" type="image/icon" href="/app/assets/img/eyeball.ico" />
+
+
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+
+    <style>
+        html {
+            min-height: 100%;
+        }
+
+        body {
+            background: linear-gradient(#093100d5, #000000fa);
+            background-color: #006d09;
+        }
+
+        a {
+            color: #ffd000;
+            font-family: 'Poppins', sans-serif !important;
+        }
+
+        a:hover {
+            color: #ff3c00f8;
+            text-decoration: none;
+        }
+
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        h2 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h3 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h4 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h5 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        nav {
+            background: #001302;
+
+        }
+
+        .navbar-toggler {
+            color: #000000;
+            background: #000c01;
+        }
+
+        .navbar-toggler-icon {
+            color: #ffffff;
+            background: #000000;
+        }
+
+        .dropdown-menu {
+            background: #000c01;
+            border-color: #51ff00;
+            border-block-width: 1px;
+            margin-inline: 10vh;
+        }
+
+
+        .jumbotron {
+            background: #00000000;
+            /* background: linear-gradient(#200000d2, #683e0000); */
+
+            /* background: #130000c2; */
+        }
+    </style>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+    </style>
+
+
+
+</head>
+
+<body>
+
+    <font color="#ffffff">
+
+        <div>
+
+            <nav class="navbar navbar-expand-sm float-top">
+                <div class="navbar-brand">
+                    <a class="navbar-brand" href="../">
+                        <img width=50 height=50 src="./assets/img/hat-logo.svg">
+                        <font color="#ffffff">HeapWars.com</font>
+                    </a>
+                </div>
+
+                <button class="navbar-toggler justify-content-end type=" button" data-toggle="collapse"
+                    data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>Docs</b>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+                                <a href="https://github.com/0xbitcoin" target="_blank">
+                                    &nbsp; <i class="fab fa-github"
+                                        style="font-size:20px;color:#ffd000;"></i>&nbsp;&nbsp;Github
+                                </a>
+                                <br>
+                                <a href="https://twitter.com/0xBTCFoundation" target="_blank">
+                                    &nbsp; <i class="fab fa-twitter"
+                                        style="font-size:20px;color:#ffd000;"></i>&nbsp;&nbsp;Twitter
+                                </a>
+                                <br>
+                                <a href="https://medium.com/0xBitcoinFoundation" target="_blank">
+                                    &nbsp; <i class="fab fa-medium"
+                                        style="font-size:20px;color:#ffd000;">&nbsp;&nbsp;</i>Medium
+                                </a>
+                                <br>
+                                <a href="https://discordapp.com/invite/xAPwaDC" target="_blank">
+                                    &nbsp; <i class="fab fa-discord"
+                                        style="font-size:20px;color:#ffd000;">&nbsp;&nbsp;</i>Discord
+                                </a>
+                                <br>
+                                <a href="https://t.me/ZEROxBTC" target="_blank">
+                                    &nbsp; <i class="fab fa-telegram-plane"
+                                        style="font-size:20px;color:#ffd000;">&nbsp;&nbsp;</i>Telegram
+                                </a>
+                                <br>
+                                <a href="https://www.reddit.com/r/0xbitcoin/" target="_blank">
+                                    &nbsp; <i class="fab fa-reddit"
+                                        style="font-size:20px;color:#ffd000;">&nbsp;&nbsp;</i>Reddit
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <b>Community </b>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+                                <a href="https://github.com/0xbitcoin" target="_blank">
+                                    &nbsp; <i class="fab fa-github"
+                                        style="font-size:20px;color: #ffd000;"></i>&nbsp;&nbsp;Github
+                                </a>
+                                <br>
+                                <a href="https://twitter.com/0xBTCFoundation" target="_blank">
+                                    &nbsp; <i class="fab fa-twitter"
+                                        style="font-size:20px;color:#ffd000;"></i>&nbsp;&nbsp;Twitter
+                                </a>
+                                <br>
+                                <a href="https://medium.com/0xBitcoinFoundation" target="_blank">
+                                    &nbsp; <i class="fab fa-medium"
+                                        style="font-size:20px;color:#ffd000;">&nbsp;&nbsp;</i>Medium
+                                </a>
+                                <br>
+                                <a href="https://discordapp.com/invite/xAPwaDC" target="_blank">
+                                    &nbsp; <i class="fab fa-discord"
+                                        style="font-size:20px;color:#ffd000;">&nbsp;&nbsp;</i>Discord
+                                </a>
+                                <br>
+                                <a href="https://t.me/ZEROxBTC" target="_blank">
+                                    &nbsp; <i class="fab fa-telegram-plane"
+                                        style="font-size:20px;color:#ffd000;">&nbsp;&nbsp;</i>Telegram
+                                </a>
+                                <br>
+                                <a href="https://www.reddit.com/r/0xbitcoin/" target="_blank">
+                                    &nbsp; <i class="fab fa-reddit"
+                                        style="font-size:20px;color:#ffd000;">&nbsp;&nbsp;</i>Reddit
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="navbar-end" style="padding:5px;">
+
+
+
+                    </div>
+                    <a class="nav-item" href="https://0xbitcoin.trade/" target="_blank">
+                        <img src="./assets/img/uniswap.png" class="shadow hover-effects" style="border-radius: 50% "
+                            height="50" width="50"></a>
+
+
+                </div>
+            </nav>
+
+            <div class="jumbotron jumbotron-fluid">
+                <p align="center">
+
+                    <h1 align="center">Shuffle Monster (SHUF) Token Stats and Heap Tracker</h1>
+
+                </p>
+            </div>
+            <div class="col-xl container">
+
+
+                <div class="container col-xl-12">
+                    <div class="row-xl-12">
+                        <br><br>
+
+
+                    </div>
+
+
+                    <div class="row justify-content-center">
+                        <div class="col-4">
+
+                            <p align="center">
+                                <h2>Top of Heap</h2>
+                            </p>
+                        </div>
+                        <div class="col-4">
+                            <br>
+                        </div>
+                        <div class="col-4">
+                            <table width="100%">
+                                <tr>
+                                    <td align="right">
+                                        <font: style="font-size:20px;color:#ffd000;">
+                                            <h5>Current Heap minimum</h5>
+    </font>
+
+    </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <span id="heapTop"><br></span>
+            <font style="color: #ff3c00f8;">
+                <b>SHUF</b>
+            </font>
+        </td>
+    </tr>
+
+    </table>
+    </div>
+    </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-xl-12">
+
+
+
+
+            <p align="center">
+
+                PASTE YOUR SHUFFLE TOKEN ADDRESSES
+
+                Address:<br>
+                <textarea id="myTextarea" rows="5" cols="60">
+0x8F475d049431e182C6706F220Bc4D64e432524BA
+0xF2F1F412A6Af8067D0DeFd3B6Cc2C7bEd7C15e78</textarea>
+            </p>
+            <p align="center">
+
+                Click the button..
+                <br>
+                & see your Shuffle.Monster(SHUF) tokens and Heap positions</p>
+            <p align="center">
+                <button type="button" onclick="myFunction()">Try it</button>
+
+
+            </p>
+            <div class="row">
+                <div class="col-xl-6">
+                    <table width="100%">
+                        <tr>
+                            <td align="left">
+                                <h3>My Heap Spots</h3>
+
+                                <div id="mySpots">
+                                    <div id="addy">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+
+                <div class="col-xl-6 justify-content-right">
+                    <table width="100%">
+                        <tr>
+                            <td align="right">
+
+                                <h3>My Balances</h3>
+                                <div id="myBalances">
+                                </div>
+                                <div id="addy2">
+                                </div>
+
+                            </td>
+                        </tr>
+                    </table>
+
+
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+    </div>
+
+    </div>
+
+
+
+
+
+    </div>
+    </font>
+</body>
+
+
+
+
+
+<!--Start ClickToTop-->
+
+<div class="totop">
+    <a href="#top" id="totop"><i class="fa fa-angle-up"></i></a>
+</div>
+
+
+<!--End ClickToTop-->
+
+</div>
+
+
+<script>
+    let addresses = [];
+
+    function myFunction() {
+        addresses = document.getElementById("myTextarea").value.split(/\r?\n/);
+        $('#mySpots')[0].innerHTML = ''
+        $('#myBalances')[0].innerHTML = ''
+
+        addresses.map(address => {
+            console.log('address - looping!', address)
+            getHeapIndex(address).then(function (result) {
+                console.log(address);
+                let h =
+                    `${address}<br> ^  <span style="color: #ff3c00f8;">is # ${result} in the Heap</span> </br></br>`;
+                console.log(h);
+                $('#mySpots').append(h);
+            });
+
+            getBalance(address).then(function (result) {
+                let h =
+                    `${address}</br>^ Has <span style="color: #ff3c00f8;">${web3.utils.fromWei(result, 'ether')} SHUF</span>  </br></br>`;
+                console.log('@@@', h);
+                $('#myBalances').append(h);
+            });
+        })
+    }
+
+    var shuffleABI = [{
+        "constant": true,
+        "inputs": [],
+        "name": "name",
+        "outputs": [{
+            "name": "",
+            "type": "string"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{
+            "name": "_to",
+            "type": "address"
+        }, {
+            "name": "_value",
+            "type": "uint256"
+        }],
+        "name": "transferWithFee",
+        "outputs": [{
+            "name": "",
+            "type": "bool"
+        }],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [{
+            "name": "_i",
+            "type": "uint256"
+        }],
+        "name": "heapEntry",
+        "outputs": [{
+            "name": "",
+            "type": "address"
+        }, {
+            "name": "",
+            "type": "uint256"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{
+            "name": "_spender",
+            "type": "address"
+        }, {
+            "name": "_value",
+            "type": "uint256"
+        }],
+        "name": "approve",
+        "outputs": [{
+            "name": "",
+            "type": "bool"
+        }],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{
+            "name": "_owner",
+            "type": "address"
+        }],
+        "name": "setOwner",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [{
+            "name": "",
+            "type": "address"
+        }],
+        "name": "whitelistTo",
+        "outputs": [{
+            "name": "",
+            "type": "bool"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [],
+        "name": "totalSupply",
+        "outputs": [{
+            "name": "",
+            "type": "uint256"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{
+            "name": "_from",
+            "type": "address"
+        }, {
+            "name": "_to",
+            "type": "address"
+        }, {
+            "name": "_value",
+            "type": "uint256"
+        }],
+        "name": "transferFrom",
+        "outputs": [{
+            "name": "",
+            "type": "bool"
+        }],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [],
+        "name": "decimals",
+        "outputs": [{
+            "name": "",
+            "type": "uint8"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [],
+        "name": "extraGas",
+        "outputs": [{
+            "name": "",
+            "type": "uint256"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{
+            "name": "_to",
+            "type": "address"
+        }, {
+            "name": "_amount",
+            "type": "uint256"
+        }],
+        "name": "init",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [{
+            "name": "",
+            "type": "address"
+        }],
+        "name": "whitelistFrom",
+        "outputs": [{
+            "name": "",
+            "type": "bool"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [],
+        "name": "heapTop",
+        "outputs": [{
+            "name": "",
+            "type": "address"
+        }, {
+            "name": "",
+            "type": "uint256"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [{
+            "name": "_addr",
+            "type": "address"
+        }],
+        "name": "balanceOf",
+        "outputs": [{
+            "name": "",
+            "type": "uint256"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [],
+        "name": "topSize",
+        "outputs": [{
+            "name": "",
+            "type": "uint256"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [{
+            "name": "_addr",
+            "type": "address"
+        }, {
+            "name": "_cat",
+            "type": "uint256"
+        }],
+        "name": "getNonce",
+        "outputs": [{
+            "name": "",
+            "type": "uint256"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{
+            "name": "_from",
+            "type": "address"
+        }, {
+            "name": "_to",
+            "type": "address"
+        }, {
+            "name": "_value",
+            "type": "uint256"
+        }],
+        "name": "transferFromWithFee",
+        "outputs": [{
+            "name": "",
+            "type": "bool"
+        }],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{
+            "name": "_gas",
+            "type": "uint256"
+        }],
+        "name": "setExtraGas",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [],
+        "name": "owner",
+        "outputs": [{
+            "name": "",
+            "type": "address"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [],
+        "name": "symbol",
+        "outputs": [{
+            "name": "",
+            "type": "string"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [],
+        "name": "heap",
+        "outputs": [{
+            "name": "",
+            "type": "address"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{
+            "name": "_addr",
+            "type": "address"
+        }, {
+            "name": "_whitelisted",
+            "type": "bool"
+        }],
+        "name": "setWhitelistedTo",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{
+            "name": "_to",
+            "type": "address"
+        }, {
+            "name": "_value",
+            "type": "uint256"
+        }],
+        "name": "transfer",
+        "outputs": [{
+            "name": "",
+            "type": "bool"
+        }],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [{
+            "name": "_addr",
+            "type": "address"
+        }],
+        "name": "heapIndex",
+        "outputs": [{
+            "name": "",
+            "type": "uint256"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{
+            "name": "_heap",
+            "type": "address"
+        }],
+        "name": "setHeap",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{
+            "name": "_name",
+            "type": "string"
+        }],
+        "name": "setName",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [],
+        "name": "FEE",
+        "outputs": [{
+            "name": "",
+            "type": "uint256"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [{
+            "name": "_addr",
+            "type": "address"
+        }, {
+            "name": "_spender",
+            "type": "address"
+        }],
+        "name": "allowance",
+        "outputs": [{
+            "name": "",
+            "type": "uint256"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [],
+        "name": "heapSize",
+        "outputs": [{
+            "name": "",
+            "type": "uint256"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{
+            "name": "_addr",
+            "type": "address"
+        }, {
+            "name": "_whitelisted",
+            "type": "bool"
+        }],
+        "name": "setWhitelistedFrom",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "anonymous": false,
+        "inputs": [{
+            "indexed": true,
+            "name": "_addr",
+            "type": "address"
+        }, {
+            "indexed": false,
+            "name": "_value",
+            "type": "uint256"
+        }],
+        "name": "Winner",
+        "type": "event"
+    }, {
+        "anonymous": false,
+        "inputs": [{
+            "indexed": false,
+            "name": "_prev",
+            "type": "string"
+        }, {
+            "indexed": false,
+            "name": "_new",
+            "type": "string"
+        }],
+        "name": "SetName",
+        "type": "event"
+    }, {
+        "anonymous": false,
+        "inputs": [{
+            "indexed": false,
+            "name": "_prev",
+            "type": "uint256"
+        }, {
+            "indexed": false,
+            "name": "_new",
+            "type": "uint256"
+        }],
+        "name": "SetExtraGas",
+        "type": "event"
+    }, {
+        "anonymous": false,
+        "inputs": [{
+            "indexed": false,
+            "name": "_prev",
+            "type": "address"
+        }, {
+            "indexed": false,
+            "name": "_new",
+            "type": "address"
+        }],
+        "name": "SetHeap",
+        "type": "event"
+    }, {
+        "anonymous": false,
+        "inputs": [{
+            "indexed": false,
+            "name": "_addr",
+            "type": "address"
+        }, {
+            "indexed": false,
+            "name": "_whitelisted",
+            "type": "bool"
+        }],
+        "name": "WhitelistFrom",
+        "type": "event"
+    }, {
+        "anonymous": false,
+        "inputs": [{
+            "indexed": false,
+            "name": "_addr",
+            "type": "address"
+        }, {
+            "indexed": false,
+            "name": "_whitelisted",
+            "type": "bool"
+        }],
+        "name": "WhitelistTo",
+        "type": "event"
+    }, {
+        "anonymous": false,
+        "inputs": [{
+            "indexed": true,
+            "name": "_from",
+            "type": "address"
+        }, {
+            "indexed": true,
+            "name": "_to",
+            "type": "address"
+        }, {
+            "indexed": false,
+            "name": "_value",
+            "type": "uint256"
+        }],
+        "name": "Transfer",
+        "type": "event"
+    }, {
+        "anonymous": false,
+        "inputs": [{
+            "indexed": true,
+            "name": "_owner",
+            "type": "address"
+        }, {
+            "indexed": true,
+            "name": "_spender",
+            "type": "address"
+        }, {
+            "indexed": false,
+            "name": "_value",
+            "type": "uint256"
+        }],
+        "name": "Approval",
+        "type": "event"
+    }, {
+        "anonymous": false,
+        "inputs": [{
+            "indexed": false,
+            "name": "_from",
+            "type": "address"
+        }, {
+            "indexed": false,
+            "name": "_to",
+            "type": "address"
+        }],
+        "name": "TransferOwnership",
+        "type": "event"
+    }];
+
+    var contractAddress = "0x3A9FfF453d50D4Ac52A6890647b823379ba36B9E";
+
+    if (typeof web3 !== 'undefined') {
+        web3 = new Web3(web3.currentProvider);
+    } else {
+        // set the provider you want from Web3.providers
+        //web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+        web3 = new Web3(new Web3.providers.HttpProvider(
+            'https://mainnet.infura.io/v3/d49aab007464452cab5a8c32653bb437'))
+    }
+    var shuffle = new web3.eth.Contract(shuffleABI, contractAddress);
+
+    shuffle.methods.heapTop().call().then(function (result) {
+        $('#heapTop').html(web3.utils.fromWei(result[1], 'ether'));
+    });
+
+    function getHeapIndex(addy) {
+        return shuffle.methods.heapIndex(addy).call()
+    }
+
+    function getBalance(addy) {
+        return shuffle.methods.balanceOf(addy).call()
+    }
+</script>
+
+< </html>
