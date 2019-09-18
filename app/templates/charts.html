@@ -1,0 +1,49 @@
+<!-- <style>
+    #token-txs-11 {
+        line-height: 1.8;
+        border-radius: 8px;
+        max-width: 700px !important;
+        background-blend-mode: darken;
+        background-color: #020a00d5;
+    }
+    #token-txs-11 .txs.big-screen-table td .tx-amount{
+        display: inline-block;
+        width: 150px;
+        white-space: nowrap;
+    }
+    #token-txs-11 .txs.big-screen-table td .tx-link{
+        max-width: 120px;
+    }
+    #token-txs-11 .txs.big-screen-table td .tx-link:last-child{
+        max-width: 150px;
+    }
+    #token-txs-11 .txs.big-screen-table td .tx-amount a:nth-child(1){
+        max-width: 110px !important;
+    }
+    #token-txs-11 .txs.big-screen-table td .tx-amount  a:nth-child(2){
+        max-width: 50px !important;
+    }
+</style>
+<div id="token-txs-11"></div>
+<script type="text/javascript">
+    if (typeof (eWgs) === 'undefined') {
+        document.write('<scr' + 'ipt src="https://api.ethplorer.io/widget.js?' + new Date().getTime().toString().substr(0, 7) + '" async></scr' + 'ipt>');
+        var eWgs = [];
+    }
+    eWgs.push(function () {
+        ethplorerWidget.init(
+            '#token-txs-11', // Placeholder element
+            'tokenHistory', // Widget type
+            {
+                address: '0x3a9fff453d50d4ac52a6890647b823379ba36b9e', // keep empty to show all tokens
+                limit: 10, // Number of records to show
+            },
+            {
+                header: '<div class="txs-header">WETH Recent Transactions</div>', // customized header
+                loader: '<div class="txs-loading">* L * O * A * D * I * N * G *<br><small>Please wait...</small></div>', // customized loader
+                bigScreenTable: '<tr><td>%from% <span class="tx-send">sent</span> <span class="tx-amount">%amount% %token%</span> <span class="tx-send">to</span> %to% <span class="tx-send">at</span><span class="tx-date"> %datetime%</span></td></tr>'
+
+            }
+        );
+    });
+</script> -->
