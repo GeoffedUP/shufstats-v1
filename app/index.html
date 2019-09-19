@@ -1,77 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <%= require('html-loader!./templates/head.html') %>
-  </head>
-  <body>
-    <%= require('html-loader!./templates/navbar-header.html') %>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-    <div class="wrapper">
-      <top class="top">
-        <h1>Track your Shuffle Monster Tokens</h1>
-      </top>
-      <article class="box">
-        <h5>Input Wallet Addresses below to Track Heap</h5>
-        <div class="fakeimg" style="height: 250px;">
-          <p align="center">
-            PASTE YOUR SHUFFLE TOKEN ADDRESSES BELOW<br />
-            <textarea id="myTextarea" rows="9" cols="50">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+
+  <%= require('html-loader!./templates/head.html') %>
+
+
+</head>
+
+<body>
+  <%= require('html-loader!./templates/navbar-header.html') %>
+
+  <div class="wrapper">
+    <top class="top">
+      <h1>Track your Shuffle Monster Tokens</h1>
+    </top>
+    <article class="box">
+      <h5>Input Wallet Addresses below to Track Heap</h5>
+      <div class="fakeimg" style="height: 250px;">
+        <p align="center">
+          PASTE YOUR SHUFFLE TOKEN ADDRESSES BELOW<br />
+          <textarea id="myTextarea" rows="9" cols="50">
 0x8F475d049431e182C6706F220Bc4D64e432524BA
 0xF2F1F412A6Af8067D0DeFd3B6Cc2C7bEd7C15e78
 0x8F475d049431e182C6706F220Bc4D64e432524BA
 0xF2F1F412A6Af8067D0DeFd3B6Cc2C7bEd7C15e78
 0x8F475d049431e182C6706F220Bc4D64e432524BA
 0xF2F1F412A6Af8067D0DeFd3B6Cc2C7bEd7C15e78</textarea>
-          </p>
-            <button type="button" onclick="myFunction()">Get Heap Results</button>
-          </p>
-        </div>
-      </article>
-      <aside class="aside aside-1">
-        <div class="fakeimg-1" style="height: 100%;">
-          <h5>My Heap Spots</h5>
-          <div id="mySpots">
-            <div id="addy"></div>
-          </div>
-        </div>
-      </aside>
-      <aside class="aside aside-2">
-        <div class="fakeimg-2" style="height: 100%;">
-          <h5>My Address Balances</h5>
-          <div id="myBalances"></div>
-          <div id="addy2"></div>
-        </div>
-      </aside>
-      <bottom class="bottom">
-        <div class="fakeimg" style="height:400px;">
-          <h5>Heap Stats</h5>
-        </div>
-      </bottom>
-    </div>
-
-    <!-- The flexible grid (content) -->
-    <!-- <div class="row">
-      <div class="left">
+        </p>
+        <button type="button" class="btn btn-success" onclick="myFunction()">Get Heap Results</button>
+        </p>
+      </div>
+    </article>
+    <aside class="aside aside-1">
+      <div class="fakeimg-1" style="height: 100%;">
         <h5>My Heap Spots</h5>
-        <div class="fakeimg" style="height:300px;">Image</div>
+        <div id="mySpots">
+          <div id="addy"></div>
+        </div>
+      </div>
+    </aside>
+    <aside class="aside aside-2">
+      <div class="fakeimg-2" style="height: 100%;">
+        <h5>My Address Balances</h5>
+        <div id="myBalances"></div>
+        <div id="addy2"></div>
+      </div>
+    </aside>
+    <bottom class="bottom">
+      <div class="fakeimg" style="height:200px;">
         <h5>Heap Stats</h5>
-        <div class="fakeimg" style="height:400px;">Image</div>
       </div>
-      <div class="center">
-        <h5>Input Wallet Addresses below to Track Heap</h5>
-        <div class="fakeimg" style="height:300px;">Image</div>
-        <h5>Latest Shuffle Token txns</h5>
-        <div class="fakeimg" style="height:400px;">Image</div>
-      </div>
-      <div class="right">
-        <h5>My Address Balances</h5>
-        <div class="fakeimg" style="height:300px;">Image</div>
-        <h5>My Address Balances</h5>
-        <div class="fakeimg" style="height:400px;">Image</div>
-      </div>
-    </div> -->
-  </body>
-  <footer><%= require('html-loader!./templates/footer.html') %></footer>
+    </bottom>
+  </div>
 
-  <%= require('html-loader!./templates/web3.html') %>
+</body>
+<footer><%= require('html-loader!./templates/footer.html') %></footer>
+
+<%= require('html-loader!./templates/web3.html') %>
+
 </html>

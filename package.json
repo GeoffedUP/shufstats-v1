@@ -8,6 +8,10 @@
     "dev": "webpack-dev-server",
     "express": "node express-dev.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geoffedup/shuf-tools.git"
+  },
   "author": "geoffedup",
   "license": "MIT",
   "dependencies": {

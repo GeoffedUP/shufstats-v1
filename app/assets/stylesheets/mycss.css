@@ -51,6 +51,7 @@ Header
 
 /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 650px) {
+
   .row,
   .navbar {
     flex-direction: column;
@@ -81,6 +82,7 @@ Header
   background-color: transparent;
   padding: 20px;
 }
+
 /* Sidebar/right column */
 .right {
   flex: 25%;
@@ -91,18 +93,19 @@ Header
 .fakeimg {
   /* background: url(.\..\img\greenbg-og.png) center top repeat; */
   /* background-size: cover; */
-  background: #0000005d;
+  background: #051800bd;
   border-color: #000000;
   padding: 10px 10px 10px 10px;
   border-block-width: 10px;
   margin-bottom: 0.1vh;
+  box-shadow: 3px;
 }
 
 /* Fake image, just for this example */
 .fakeimg-1 {
   /* background: url(.\..\img\greenbg-og.png) center top repeat; */
   /* background-size: cover; */
-  background: #0000005d;
+  background: #051800bd;
   border-color: #000000;
   padding: 0.1vh 10px 10px 10px;
   border-block-width: 10px;
@@ -113,7 +116,7 @@ Header
 .fakeimg-2 {
   /* background: url(.\..\img\greenbg-og.png) center top repeat; */
   /* background-size: cover; */
-  background: #0000005d;
+  background: #051800bd;
   border-color: #000000;
   padding: 10px 10px 10px 10px;
   border-block-width: 10px;
@@ -127,7 +130,7 @@ Header
   text-align: center;
 }
 
-.wrapper > * {
+.wrapper>* {
   padding: 10px;
   flex: 1 100%;
 }
@@ -161,19 +164,23 @@ Header
   }
 }
 
-@media all and (min-width: 1200px) {
+@media all and (min-width: 1300px) {
   .box {
     flex: 1 0px;
   }
+
   .aside-1 {
     order: 1;
   }
+
   .box {
     order: 2;
   }
+
   .aside-2 {
     order: 3;
   }
+
   .bottom {
     order: 4;
   }
@@ -186,6 +193,7 @@ Navbar
 nav {
   background: #001302a8;
 }
+
 nav {
   /* background-color: #000e01; */
   /* background-image: url(.\..\img\MediumBanner-600x200-2.png);
@@ -225,6 +233,7 @@ nav {
   color: #ff3c00f8;
   background: transparent;
 }
+
 .navbar i {
   color: #ff3c00f8;
   background: transparent;
@@ -237,6 +246,7 @@ nav {
   border-block-width: 1px;
   margin-inline: 10vh;
 }
+
 .dropdown-menu a {
   color: #ffffff;
 }
@@ -250,8 +260,8 @@ html {
 }
 
 body {
-  background: linear-gradient(#093100d5, #000000fa);
-  background-color: #006d09;
+  background: url(.\..\img\1500x500.jpg) center repeat;
+  background-size: cover;
   font-family: "Poppins", sans-serif;
   margin: 0;
   font-size: 15px;
@@ -266,7 +276,7 @@ body {
   background-color: transparent;
 }
 
-.flex-container > div {
+.flex-container>div {
   background-color: transparent;
   color: white;
   width: 100px;
@@ -318,6 +328,44 @@ h6 {
   /* background: linear-gradient(#200000d2, #683e0000); */
 
   /* background: #130000c2; */
+}
+
+.btn-success {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #ff3c00f8
+}
+
+.btn-success:hover {
+  color: #fff;
+  background-color: #ff3c00f8;
+  border-color: #2bff00
+}
+
+.btn-success.focus,
+.btn-success:focus {
+  box-shadow: 0 0 0 .2rem #ff3c00f8
+}
+
+.btn-success.disabled,
+.btn-success:disabled {
+  color: #fff;
+  background-color: #2bff00;
+  border-color: #ff3c00f8
+}
+
+.btn-success:not(:disabled):not(.disabled).active,
+.btn-success:not(:disabled):not(.disabled):active,
+.show>.btn-success.dropdown-toggle {
+  color: #fff;
+  background-color: #ff3c00f8;
+  border-color: #2bff00
+}
+
+.btn-success:not(:disabled):not(.disabled).active:focus,
+.btn-success:not(:disabled):not(.disabled):active:focus,
+.show>.btn-success.dropdown-toggle:focus {
+  box-shadow: 0 0 0 .2rem #ff3c00f8
 }
 
 /*----------------------------------------
