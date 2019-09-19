@@ -34,14 +34,14 @@ var webpackPlugins = [
   new CopyWebpackPlugin([
     {
       from: "app/assets/contracts",
-      to: "./"
+      to: "./contracts"
     }
   ]),
 
   new CopyWebpackPlugin([
     {
       from: "app/assets/img",
-      to: "./assets/img"
+      to: "app/assets/img"
     }
   ])
 ];

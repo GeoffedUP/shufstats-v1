@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+        <%= require('html-loader!./templates/head.html') %>
+
+
+
+
+
+</head>
+
+<body>
+    
+
+        <div>
+
+
+        <%= require('html-loader!./templates/navbar-header.html') %>
+
+        <!-- <div class="jumbotron jumbotron-fluid">
+            <p align="center">
+
+                <h1 align="center">Shuffle Monster (SHUF) Token Stats and Heap Tracker</h1>
+
+            </p>
+        </div> -->
+        <div class="col-xl flex-container">
+        <div class="col-xl container">
+                
+                
+            <div class="container col-xl-12">
+                
+                <div class="row-xl-12">
+                    <br><br>
+
+
+                </div>
+
+
+                <div class="row justify-content-center">
+                    <div class="col-4">
+
+                        <p align="center">
+                            <h2>Top of Heap</h2>
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <br>
+                    </div>
+                    <div class="col-4">
+                        <table width="100%">
+                            <tr>
+                                <td align="right">
+
+                                    <h5>Current Heap minimum</h5>
+
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <span id="heapTop"><br></span>
+                                    <font style="color: #ff3c00f8;">
+                                        <b>SHUF</b>
+
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-xl-12">
+
+
+
+
+                    <p align="center">
+
+                        PASTE YOUR SHUFFLE TOKEN ADDRESSES
+
+                        Address:<br>
+                        <textarea id="myTextarea" rows="5" cols="60">
+0x8F475d049431e182C6706F220Bc4D64e432524BA
+0xF2F1F412A6Af8067D0DeFd3B6Cc2C7bEd7C15e78</textarea>
+                    </p>
+                    <p align="center">
+
+                        Click the button..
+                        <br>
+                        & see your Shuffle.Monster(SHUF) tokens and Heap positions</p>
+                    <p align="center">
+                        <button type="button" onclick="myFunction()">Try it</button>
+
+
+                    </p>
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <table width="100%">
+                                <tr>
+                                    <td align="left">
+                                        <h3>My Heap Spots</h3>
+
+                                        <div id="mySpots">
+                                            <div id="addy">
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+                        <div class="col-xl-6 justify-content-right">
+                            <table width="100%">
+                                <tr>
+                                    <td align="right">
+
+                                        <h3>My Balances</h3>
+                                        <div id="myBalances">
+                                        </div>
+                                        <div id="addy2">
+                                        </div>
+
+                                    </td>
+                                </tr>
+                            </table>
+
+
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    
+
+
+
+    </div>
+
+</body>
+
+
+
+<footer>
+
+
+
+    <div class="footer-top">
+
+        TESTING
+    </div>
+
+
+    <div class="footer-bottom">
+        <div class="btn.btn-instgram">
+            test
+        </div>
+    </div>
+
+    <div class="copyright">
+        <p>
+            <font size="1">
+                The source code is licensed
+                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+                is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+            </font>
+        </p>
+    </div>
+    <!--Start ClickToTop-->
+
+    <div class="totop">
+        <p align="right">
+            <a href="#top" id="totop"><font size="8"><i style="opacity: 0.5;" class="fa fa-arrow-alt-circle-up"></i></a></font>
+        </p>
+    </div>
+
+
+    <!--End ClickToTop-->
+</footer>
+
+
+
+
+
+
+<script>
+    let addresses = [];
+
+    function myFunction() {
+        addresses = document.getElementById("myTextarea").value.split(/\r?\n/);
+        $('#mySpots')[0].innerHTML = ''
+        $('#myBalances')[0].innerHTML = ''
+
+        addresses.map(address => {
+            console.log('address - looping!', address)
+            getHeapIndex(address).then(function (result) {
+                console.log(address);
+                let h =
+                    `${address}<br> ^  <span style="color: #ff3c00f8;">is # ${result} in the Heap</span> </br></br>`;
+                console.log(h);
+                $('#mySpots').append(h);
+            });
+
+            getBalance(address).then(function (result) {
+                let h =
+                    `${address}</br>^ Has <span style="color: #ff3c00f8;">${web3.utils.fromWei(result, 'ether')} SHUF</span>  </br></br>`;
+                console.log('@@@', h);
+                $('#myBalances').append(h);
+            });
+        })
+    }
+
+    var shuffleABI = [{
+        "constant": true,
+        "inputs": [],
+        "name": "name",
+        "outputs": [{
+            "name": "",
+            "type": "string"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{
+            "name": "_to",
+            "type": "address"
+        }, {
+            "name": "_value",
+            "type": "uint256"
+        }],
+        "name": "transferWithFee",
+        "outputs": [{
+            "name": "",
+            "type": "bool"
+        }],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [{
+            "name": "_i",
+            "type": "uint256"
+        }],
+        "name": "heapEntry",
+        "outputs": [{
+            "name": "",
+            "type": "address"
+        }, {
+            "name": "",
+            "type": "uint256"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{
+            "name": "_spender",
+            "type": "address"
+        }, {
+            "name": "_value",
+            "type": "uint256"
+        }],
+        "name": "approve",
+        "outputs": [{
+            "name": "",
+            "type": "bool"
+        }],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{
+            "name": "_owner",
+            "type": "address"
+        }],
+        "name": "setOwner",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [{
+            "name": "",
+            "type": "address"
+        }],
+        "name": "whitelistTo",
+        "outputs": [{
+            "name": "",
+            "type": "bool"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [],
+        "name": "totalSupply",
+        "outputs": [{
+            "name": "",
+            "type": "uint256"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{
+            "name": "_from",
+            "type": "address"
+        }, {
+            "name": "_to",
+            "type": "address"
+        }, {
+            "name": "_value",
+            "type": "uint256"
+        }],
+        "name": "transferFrom",
+        "outputs": [{
+            "name": "",
+            "type": "bool"
+        }],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [],
+        "name": "decimals",
+        "outputs": [{
+            "name": "",
+            "type": "uint8"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [],
+        "name": "extraGas",
+        "outputs": [{
+            "name": "",
+            "type": "uint256"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{
+            "name": "_to",
+            "type": "address"
+        }, {
+            "name": "_amount",
+            "type": "uint256"
+        }],
+        "name": "init",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [{
+            "name": "",
+            "type": "address"
+        }],
+        "name": "whitelistFrom",
+        "outputs": [{
+            "name": "",
+            "type": "bool"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [],
+        "name": "heapTop",
+        "outputs": [{
+            "name": "",
+            "type": "address"
+        }, {
+            "name": "",
+            "type": "uint256"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [{
+            "name": "_addr",
+            "type": "address"
+        }],
+        "name": "balanceOf",
+        "outputs": [{
+            "name": "",
+            "type": "uint256"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [],
+        "name": "topSize",
+        "outputs": [{
+            "name": "",
+            "type": "uint256"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [{
+            "name": "_addr",
+            "type": "address"
+        }, {
+            "name": "_cat",
+            "type": "uint256"
+        }],
+        "name": "getNonce",
+        "outputs": [{
+            "name": "",
+            "type": "uint256"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{
+            "name": "_from",
+            "type": "address"
+        }, {
+            "name": "_to",
+            "type": "address"
+        }, {
+            "name": "_value",
+            "type": "uint256"
+        }],
+        "name": "transferFromWithFee",
+        "outputs": [{
+            "name": "",
+            "type": "bool"
+        }],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{
+            "name": "_gas",
+            "type": "uint256"
+        }],
+        "name": "setExtraGas",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [],
+        "name": "owner",
+        "outputs": [{
+            "name": "",
+            "type": "address"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [],
+        "name": "symbol",
+        "outputs": [{
+            "name": "",
+            "type": "string"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [],
+        "name": "heap",
+        "outputs": [{
+            "name": "",
+            "type": "address"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{
+            "name": "_addr",
+            "type": "address"
+        }, {
+            "name": "_whitelisted",
+            "type": "bool"
+        }],
+        "name": "setWhitelistedTo",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{
+            "name": "_to",
+            "type": "address"
+        }, {
+            "name": "_value",
+            "type": "uint256"
+        }],
+        "name": "transfer",
+        "outputs": [{
+            "name": "",
+            "type": "bool"
+        }],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [{
+            "name": "_addr",
+            "type": "address"
+        }],
+        "name": "heapIndex",
+        "outputs": [{
+            "name": "",
+            "type": "uint256"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{
+            "name": "_heap",
+            "type": "address"
+        }],
+        "name": "setHeap",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{
+            "name": "_name",
+            "type": "string"
+        }],
+        "name": "setName",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [],
+        "name": "FEE",
+        "outputs": [{
+            "name": "",
+            "type": "uint256"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [{
+            "name": "_addr",
+            "type": "address"
+        }, {
+            "name": "_spender",
+            "type": "address"
+        }],
+        "name": "allowance",
+        "outputs": [{
+            "name": "",
+            "type": "uint256"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [],
+        "name": "heapSize",
+        "outputs": [{
+            "name": "",
+            "type": "uint256"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{
+            "name": "_addr",
+            "type": "address"
+        }, {
+            "name": "_whitelisted",
+            "type": "bool"
+        }],
+        "name": "setWhitelistedFrom",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "anonymous": false,
+        "inputs": [{
+            "indexed": true,
+            "name": "_addr",
+            "type": "address"
+        }, {
+            "indexed": false,
+            "name": "_value",
+            "type": "uint256"
+        }],
+        "name": "Winner",
+        "type": "event"
+    }, {
+        "anonymous": false,
+        "inputs": [{
+            "indexed": false,
+            "name": "_prev",
+            "type": "string"
+        }, {
+            "indexed": false,
+            "name": "_new",
+            "type": "string"
+        }],
+        "name": "SetName",
+        "type": "event"
+    }, {
+        "anonymous": false,
+        "inputs": [{
+            "indexed": false,
+            "name": "_prev",
+            "type": "uint256"
+        }, {
+            "indexed": false,
+            "name": "_new",
+            "type": "uint256"
+        }],
+        "name": "SetExtraGas",
+        "type": "event"
+    }, {
+        "anonymous": false,
+        "inputs": [{
+            "indexed": false,
+            "name": "_prev",
+            "type": "address"
+        }, {
+            "indexed": false,
+            "name": "_new",
+            "type": "address"
+        }],
+        "name": "SetHeap",
+        "type": "event"
+    }, {
+        "anonymous": false,
+        "inputs": [{
+            "indexed": false,
+            "name": "_addr",
+            "type": "address"
+        }, {
+            "indexed": false,
+            "name": "_whitelisted",
+            "type": "bool"
+        }],
+        "name": "WhitelistFrom",
+        "type": "event"
+    }, {
+        "anonymous": false,
+        "inputs": [{
+            "indexed": false,
+            "name": "_addr",
+            "type": "address"
+        }, {
+            "indexed": false,
+            "name": "_whitelisted",
+            "type": "bool"
+        }],
+        "name": "WhitelistTo",
+        "type": "event"
+    }, {
+        "anonymous": false,
+        "inputs": [{
+            "indexed": true,
+            "name": "_from",
+            "type": "address"
+        }, {
+            "indexed": true,
+            "name": "_to",
+            "type": "address"
+        }, {
+            "indexed": false,
+            "name": "_value",
+            "type": "uint256"
+        }],
+        "name": "Transfer",
+        "type": "event"
+    }, {
+        "anonymous": false,
+        "inputs": [{
+            "indexed": true,
+            "name": "_owner",
+            "type": "address"
+        }, {
+            "indexed": true,
+            "name": "_spender",
+            "type": "address"
+        }, {
+            "indexed": false,
+            "name": "_value",
+            "type": "uint256"
+        }],
+        "name": "Approval",
+        "type": "event"
+    }, {
+        "anonymous": false,
+        "inputs": [{
+            "indexed": false,
+            "name": "_from",
+            "type": "address"
+        }, {
+            "indexed": false,
+            "name": "_to",
+            "type": "address"
+        }],
+        "name": "TransferOwnership",
+        "type": "event"
+    }];
+
+    var contractAddress = "0x3A9FfF453d50D4Ac52A6890647b823379ba36B9E";
+
+    if (typeof web3 !== 'undefined') {
+        web3 = new Web3(web3.currentProvider);
+    } else {
+        // set the provider you want from Web3.providers
+        //web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+        web3 = new Web3(new Web3.providers.HttpProvider(
+            'https://mainnet.infura.io/v3/d49aab007464452cab5a8c32653bb437'))
+    }
+    var shuffle = new web3.eth.Contract(shuffleABI, contractAddress);
+
+    shuffle.methods.heapTop().call().then(function (result) {
+        $('#heapTop').html(web3.utils.fromWei(result[1], 'ether'));
+    });
+
+    function getHeapIndex(addy) {
+        return shuffle.methods.heapIndex(addy).call()
+    }
+
+    function getBalance(addy) {
+        return shuffle.methods.balanceOf(addy).call()
+    }
+</script>

@@ -1,3 +1,9 @@
+import EthHelper from "./ethhelper";
+import AlertRenderer from "./alert-renderer";
+
+var alertRenderer = new AlertRenderer();
+var ethHelper = new EthHelper();
+
 const Eth = require("./template/ethjs");
 
 const $ = require("jquery");

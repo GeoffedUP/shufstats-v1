@@ -1,0 +1,17 @@
+{
+  "networks":{
+    "mainnet":{
+      "contracts": {
+          "ShuffleToken": {"name":"Shuffle.Monster V3", "blockchain_address":"0x3a9fff453d50d4ac52a6890647b823379ba36b9e"}
+
+      }
+    },
+    "ropsten":{
+      "contracts": {
+        "ShuffleToken": {"name":"TEST Shuffle.Monster V3", "blockchain_address":"0xa42E8288A3a5f82e6F3f0a95cD222B4397e8CE1C"}
+      }
+    }
+
+  }
+
+}
