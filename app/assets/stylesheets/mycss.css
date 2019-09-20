@@ -19,7 +19,7 @@ Header
   padding: 10px;
   background-size: cover, cover;
   float: center;
-  height: 200px;
+  height: 210px;
   /* background-color: #003503; */
 
   /* width: none, 2000px; */
@@ -49,146 +49,33 @@ Header
   /* padding: 5px 15px 5px 20px; */
 }
 
-/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 650px) {
-
-  .row,
-  .navbar {
-    flex-direction: column;
-  }
-}
-
-* {
-  box-sizing: border-box;
-}
-
-/* Column container */
-.row {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-/* Create three unequal columns that sits next to each other */
-/* Sidebar/left column */
-.left {
-  flex: 25%;
-  background-color: transparent;
-  padding: 20px;
-}
-
-/* Main column */
-.center {
-  flex: 50%;
-  background-color: transparent;
-  padding: 20px;
-}
-
-/* Sidebar/right column */
-.right {
-  flex: 25%;
-  background-color: transparent;
-  padding: 20px;
-}
-
-.fakeimg {
-  /* background: url(.\..\img\greenbg-og.png) center top repeat; */
-  /* background-size: cover; */
-  background: #051800bd;
-  border-color: #000000;
-  padding: 10px 10px 10px 10px;
-  border-block-width: 10px;
-  margin-bottom: 0.1vh;
-  box-shadow: 3px;
-}
-
-/* Fake image, just for this example */
-.fakeimg-1 {
-  /* background: url(.\..\img\greenbg-og.png) center top repeat; */
-  /* background-size: cover; */
-  background: #051800bd;
-  border-color: #000000;
-  padding: 0.1vh 10px 10px 10px;
-  border-block-width: 10px;
-  margin-bottom: 0.1vh;
-  text-align: top;
-}
-
-.fakeimg-2 {
-  /* background: url(.\..\img\greenbg-og.png) center top repeat; */
-  /* background-size: cover; */
-  background: #051800bd;
-  border-color: #000000;
-  padding: 10px 10px 10px 10px;
-  border-block-width: 10px;
-  margin-bottom: 0.1vh;
-}
-
-.wrapper {
-  display: flex;
-  flex-flow: row wrap;
-  font-weight: bold;
-  text-align: center;
-}
-
-.wrapper>* {
-  padding: 10px;
-  flex: 1 100%;
-}
-
-.top {
-  background: transparent;
-}
-
-.box {
-  /* text-align: left; */
-  background: transparent;
-}
-
-.aside-1 {
-  background: transparent;
-  text-align: center;
-}
-
-.aside-2 {
-  background: transparent;
-  text-align: center;
-}
-
-.bottom {
-  background: transparent;
-}
-
-@media all and (min-width: 600px) {
-  .aside {
-    flex: 1 0 0;
-  }
-}
-
-@media all and (min-width: 1300px) {
-  .box {
-    flex: 1 0px;
-  }
-
-  .aside-1 {
-    order: 1;
-  }
-
-  .box {
-    order: 2;
-  }
-
-  .aside-2 {
-    order: 3;
-  }
-
-  .bottom {
-    order: 4;
-  }
-}
-
 /*----------------------------------------
 Navbar
 ----------------------------------------*/
+
+/* Large */
+.navigation {
+  display: flex;
+  flex-flow: row wrap;
+  /* This aligns items to the end line on main-axis */
+  justify-content: flex-end;
+}
+
+/* Medium screens */
+@media all and (max-width: 1300px) {
+  .navigation {
+    /* When on medium sized screens, we center it by evenly distributing empty space around items */
+    justify-content: space-around;
+  }
+}
+
+/* Small screens */
+@media all and (max-width: 650px) {
+  .navigation {
+    /* On small screens, we are no longer using row direction but column */
+    flex-direction: column;
+  }
+}
 
 nav {
   background: #001302a8;
@@ -269,19 +156,25 @@ body {
   color: #ffffff;
 }
 
+
 .flex-container {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
+  width: 100%;
+  flex-flow: row wrap;
   align-content: space-around;
   background-color: transparent;
 }
 
 .flex-container>div {
   background-color: transparent;
-  color: white;
-  width: 100px;
+  width: 100%;
+  flex-wrap: wrap;
+  height: 100%;
+  flex-flow: row wrap;
   margin: 10px;
-  text-align: center;
+  text-align: left;
 }
 
 a {
@@ -303,11 +196,13 @@ h1 {
 h2 {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
-  color: #ffffff;
+  color: #ffd000;
 }
 
 h3 {
   font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  color: #ffd000;
 }
 
 h4 {
@@ -321,6 +216,7 @@ h5 {
 
 h6 {
   font-family: "Poppins", sans-serif;
+  color: #ffd000;
 }
 
 .jumbotron {
@@ -333,25 +229,25 @@ h6 {
 .btn-success {
   color: #fff;
   background-color: #28a745;
-  border-color: #ff3c00f8
+  border-color: #ff3c00f8;
 }
 
 .btn-success:hover {
   color: #fff;
   background-color: #ff3c00f8;
-  border-color: #2bff00
+  border-color: #2bff00;
 }
 
 .btn-success.focus,
 .btn-success:focus {
-  box-shadow: 0 0 0 .2rem #ff3c00f8
+  box-shadow: 0 0 0 0.2rem #ff3c00f8;
 }
 
 .btn-success.disabled,
 .btn-success:disabled {
   color: #fff;
   background-color: #2bff00;
-  border-color: #ff3c00f8
+  border-color: #ff3c00f8;
 }
 
 .btn-success:not(:disabled):not(.disabled).active,
@@ -359,13 +255,238 @@ h6 {
 .show>.btn-success.dropdown-toggle {
   color: #fff;
   background-color: #ff3c00f8;
-  border-color: #2bff00
+  border-color: #2bff00;
 }
 
 .btn-success:not(:disabled):not(.disabled).active:focus,
 .btn-success:not(:disabled):not(.disabled):active:focus,
 .show>.btn-success.dropdown-toggle:focus {
-  box-shadow: 0 0 0 .2rem #ff3c00f8
+  box-shadow: 0 0 0 0.2rem #ff3c00f8;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 650px) {
+  .row {
+    flex-direction: column;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Column container */
+.row {
+  display: flex;
+  flex-flow: row wrap;
+  flex-wrap: wrap;
+}
+
+/* Create three unequal columns that sits next to each other */
+/* Sidebar/left column */
+.left {
+  flex: 48%;
+  background: #051800bd;
+  border: 2px solid #051800;
+  padding: 10px 10px 10px 10px;
+  border-block-width: 10px;
+  margin-bottom: 1vh;
+  margin: 5px;
+  text-align: top;
+  margin: 1;
+}
+
+/* Main column */
+.center {
+  flex: 50%;
+  background-color: transparent;
+  padding: 20px;
+}
+
+/* Sidebar/right column */
+.right {
+  flex: 48%;
+  background: #051800bd;
+  border: 2px solid #051800;
+  padding: 10px 10px 10px 10px;
+  border-block-width: 10px;
+  margin-bottom: 1vh;
+  margin: 5px;
+  text-align: top;
+}
+
+.fakeimg {
+  /* background: url(.\..\img\greenbg-og.png) center top repeat; */
+  /* background-size: cover; */
+  background: #051800bd;
+  border: 2px solid #051800;
+  padding: 10px 10px 10px 10px;
+  border-block-width: 10px;
+  margin-bottom: 1vh;
+  box-shadow: 3px;
+}
+
+/* Fake image, just for this example */
+.fakeimg-1 {
+  /* background: url(.\..\img\greenbg-og.png) center top repeat; */
+  /* background-size: cover; */
+  background: #051800bd;
+  border: 2px solid #051800;
+  padding: 10px 10px 10px 10px;
+  border-block-width: 10px;
+  margin-bottom: 1vh;
+  text-align: top;
+}
+
+.fakeimg-2 {
+  /* background: url(.\..\img\greenbg-og.png) center top repeat; */
+  /* background-size: cover; */
+  background: #051800bd;
+  border: 2px solid #051800;
+  padding: 10px 10px 10px 10px;
+  border-block-width: 10px;
+  margin-bottom: 1vh;
+}
+
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  font-weight: bold;
+  text-align: center;
+}
+
+.wrapper>* {
+  padding: 10px 10px;
+  flex: 1 100%;
+}
+
+.top {
+  background: transparent;
+}
+
+.box {
+  /* text-align: left; */
+  background: transparent;
+}
+
+.aside-1 {
+  background: transparent;
+  text-align: center;
+}
+
+.aside-2 {
+  background: transparent;
+  text-align: center;
+}
+
+.bottom {
+  background: transparent;
+  padding: 10px 10px 10px 10px;
+  border-block-width: 10px;
+  margin-bottom: 1vh;
+  text-align: top;
+}
+
+@media all and (min-width: 500px) {
+  .aside {
+    flex: 1 0 0;
+  }
+}
+
+@media all and (min-width: 1300px) {
+  .box {
+    flex: 1 0px;
+  }
+
+  .aside-1 {
+    order: 1;
+  }
+
+  .box {
+    order: 2;
+  }
+
+  .aside-2 {
+    order: 3;
+  }
+
+  .bottom {
+    order: 4;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+input[type="text"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  background-color: #474747;
+  color: #ffffff;
+  border: 0.5px solid #ffd000;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type="submit"] {
+  background-color: #1ba100;
+  width: 100%;
+  color: #ffffff;
+  padding: 12px 20px;
+  border: 1px solid #ff3c00f8;
+  border-radius: 4px;
+  cursor: pointer;
+  float: center;
+}
+
+input[type="submit"]:hover {
+  background-color: #ff3c00f8;
+  border: 1px solid #2bff00;
+  color: #000000;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+
+  .col-25,
+  .col-75,
+  input[type="submit"] {
+    width: 100%;
+    margin-top: 0;
+  }
 }
 
 /*----------------------------------------

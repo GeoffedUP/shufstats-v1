@@ -31,24 +31,19 @@ var webpackPlugins = [
     }
   }),
 
-  new CopyWebpackPlugin([
-    {
-      from: "app/assets/contracts",
-      to: "./contracts"
-    }
-  ]),
+  new CopyWebpackPlugin([{
+    from: "app/assets/contracts",
+    to: "./contracts"
+  }]),
 
-  new CopyWebpackPlugin([
-    {
-      from: "app/assets/img",
-      to: "app/assets/img"
-    }
-  ])
+  new CopyWebpackPlugin([{
+    from: "app/assets/img",
+    to: "app/assets/img"
+  }])
 ];
 
 const routesData = {
-  routes: [
-    {
+  routes: [{
       url: "/",
       title: "HeapWars.com SHUF Token Stats",
       template: "app/index.html",
@@ -63,7 +58,7 @@ const routesData = {
   ]
 };
 
-routesData.routes.forEach(function(element) {
+routesData.routes.forEach(function (element) {
   var htmlPlugin = new HtmlWebpackPlugin({
     title: element.title,
     filename: element.filename,
@@ -85,17 +80,14 @@ module.exports = {
     publicPath: "/"
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.js$/,
-        use: [
-          {
-            loader: "babel-loader",
-            options: {
-              presets: ["@babel/preset-env"]
-            }
+        use: [{
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"]
           }
-        ]
+        }]
       },
       {
         test: /\.(scss|css)$/,
@@ -115,28 +107,24 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif)$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "[path][name].[ext]",
-              publicPath: "/"
-            }
+        use: [{
+          loader: "file-loader",
+          options: {
+            name: "[path][name].[ext]",
+            publicPath: "/"
           }
-        ]
+        }]
       },
 
       {
         test: /\.(eot|woff|woff2|ttf|svg)(\?[\s\S]+)?$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "[path][name].[ext]",
-              publicPath: "/"
-            }
+        use: [{
+          loader: "file-loader",
+          options: {
+            name: "[path][name].[ext]",
+            publicPath: "/"
           }
-        ]
+        }]
       }
     ]
   },

@@ -4,10 +4,41 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-
+  <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
 
   <%= require('html-loader!./templates/head.html') %>
 
+  <script>
+    function fetchJson() {
+      var xhr = new XMLHttpRequest();
+      // set a callback for when the json is loaded
+      xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) { // if json loaded successfully
+          var data = JSON.parse(this.responseText);
+          // do stuff with data
+          document.querySelector("#apiVersion").innerText = data["apiVersion"];
+          document.querySelector("#name").innerText = data["name"];
+          document.querySelector("#symbol").innerText = data["symbol"];
+          document.querySelector("#contractAddress").innerText = data["contractAddress"];
+          document.querySelector("#decimals").innerText = data["decimals"];
+          document.querySelector("#currentEthBlock").innerText = data["currentEthBlock"];
+          document.querySelector("#initialSupply").innerText = data["initialSupply"];
+          document.querySelector("#circulatingSupplyReadable").innerText = data["circulatingSupplyReadable"];
+          document.querySelector("#tokensBurned").innerText = data["tokensBurned"];
+          document.querySelector("#heapSize").innerText = data["heapSize"];
+          document.querySelector("#lastHeapAddress").innerText = data["heapTopAddress"];
+          document.querySelector("#lastHeapAmountReadable").innerText = data["heapTopAmountReadable"];
+
+        }
+      };
+      // fetch the json
+      xhr.open("GET", "http://167.71.121.133/api/shuf", true);
+      xhr.send();
+    }
+    window.onload = function () {
+      fetchJson();
+    };
+  </script>
 
 </head>
 
@@ -16,28 +47,29 @@
 
   <div class="wrapper">
     <top class="top">
-      <h1>Track your Shuffle Monster Tokens</h1>
+      <h1></h1>
     </top>
     <article class="box">
-      <h5>Input Wallet Addresses below to Track Heap</h5>
-      <div class="fakeimg" style="height: 250px;">
+
+      <div class="fakeimg" style="height: 100%;">
+        <h3>Track your Shuffle Monster Tokens</h3>
         <p align="center">
-          PASTE YOUR SHUFFLE TOKEN ADDRESSES BELOW<br />
-          <textarea id="myTextarea" rows="9" cols="50">
-0x8F475d049431e182C6706F220Bc4D64e432524BA
-0xF2F1F412A6Af8067D0DeFd3B6Cc2C7bEd7C15e78
-0x8F475d049431e182C6706F220Bc4D64e432524BA
-0xF2F1F412A6Af8067D0DeFd3B6Cc2C7bEd7C15e78
-0x8F475d049431e182C6706F220Bc4D64e432524BA
-0xF2F1F412A6Af8067D0DeFd3B6Cc2C7bEd7C15e78</textarea>
+          <font size="2px" Style="font-weight: 50;">paste your wallet addresses below</font>
+          <font size="2" style="color: #a8a8a8a4; font-weight: 50;"> <i>input one address per line</i></font>
+          <textarea id="myTextarea" placeholder="0x69696562885eB3C9a609f957efd150DF93BA8c2e
+0x3A9FfF453d50D4Ac52A6890647b823379ba36B9E
+0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B
+0x1Db3439a222C519ab44bb1144fC28167b4Fa6EE6
+0x4Cdc86fa95Ec2704f0849825f1F8b077deeD8d39" style="height: 100px">
+</textarea>
         </p>
-        <button type="button" class="btn btn-success" onclick="myFunction()">Get Heap Results</button>
+        <input type="submit" value="Get Heap Results" class="btn btn-success" onclick="myFunction()"></input>
         </p>
       </div>
     </article>
     <aside class="aside aside-1">
       <div class="fakeimg-1" style="height: 100%;">
-        <h5>My Heap Spots</h5>
+        <h3>My Heap Spots</h3>
         <div id="mySpots">
           <div id="addy"></div>
         </div>
@@ -45,16 +77,92 @@
     </aside>
     <aside class="aside aside-2">
       <div class="fakeimg-2" style="height: 100%;">
-        <h5>My Address Balances</h5>
+        <h3>My Address Balances</h3>
         <div id="myBalances"></div>
         <div id="addy2"></div>
       </div>
     </aside>
-    <bottom class="bottom">
-      <div class="fakeimg" style="height:200px;">
-        <h5>Heap Stats</h5>
+
+  </div>
+  <div class="wrapper">
+    <div class="row">
+      <div class="left">
+
+        <table align="center">
+
+          <tr>
+            <h3>Contract Details</h3>
+            <td align="left">
+              <font size="2">
+                <p>
+                  <font style="color: #ffd000;">Version:</font>
+                  <span id="apiVersion">loading...</span>
+                </p>
+                <p>
+                  <font style="color: #ffd000;">Name:</font>
+                  <span id="name">loading...</span>
+                </p>
+                <p>
+                  <font style="color: #ffd000;">Symbol:</font>
+                  <span id="symbol">loading...</span>
+                </p>
+                <p>
+                  <font style="color: #ffd000;">Contract Address:</font>
+                  <span id="contractAddress">loading...</span>
+                </p>
+                <p>
+                  <font style="color: #ffd000;">Decimals:</font>
+                  <span id="decimals">loading...</span>
+                </p>
+                <p>
+                  <font style="color: #ffd000;">Current Ethereum Block #:</font>
+                  <span id="currentEthBlock">loading...</span>
+                </p>
+              </font>
+            </td>
+          </tr>
+        </table>
       </div>
-    </bottom>
+
+      <div class="right">
+        <table align="center">
+          <tr>
+            <h3>Token Stats</h3>
+            <td align="left">
+              <font size="2">
+
+                <p>
+                  <font style="color: #ffd000;">Initial Supply:</font>
+                  <span id="initialSupply">loading...</span>
+                </p>
+                <p>
+                  <font style="color: #ffd000;">Current Circulating Supply:</font>
+                  <span id="circulatingSupplyReadable">loading...</span>
+                </p>
+                <p>
+                  <font style="color: #ffd000;">Token Burned:</font>
+                  <span id="tokensBurned">loading...</span>
+                </p>
+                <p>
+                  <font style="color: #ffd000;">Current Heap Size:</font>
+                  <span id="heapSize">loading...</span> / 512
+                </p>
+                <p>
+                  <font style="color: #ffd000;">Last address on the Heap:</font>
+                  <span id="lastHeapAddress">loading...</span>
+
+                </p>
+                <p>
+                  <font style="color: #ffd000;">Amount of tokens the last spot holds:</font> <span
+                    id="lastHeapAmountReadable">loading...</span>
+                </p>
+              </font>
+            </td>
+          </tr>
+        </table>
+
+      </div>
+    </div>
   </div>
 
 </body>

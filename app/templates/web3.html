@@ -11,14 +11,14 @@
             getHeapIndex(address).then(function (result) {
                 console.log(address);
                 let h =
-                    `${address}<br> ^  <span style="color: #ff3c00f8;">is # ${result} in the Heap</span> </br></br>`;
+                    `<font size="2px" Style="font-weight: 100;"><a style="color: #ffffff" href="https://etherscan.io/address/${address}" target="_blank">${address}</a></br>^  <font size="3" style="color: #ff3c00f8; font-weight: 600;">is # ${result} in the Heap</font> </br></br>`;
                 console.log(h);
                 $('#mySpots').append(h);
             });
 
             getBalance(address).then(function (result) {
                 let h =
-                    `${address}</br>^ Has <span style="color: #ff3c00f8;">${web3.utils.fromWei(result, 'ether')} SHUF</span>  </br></br>`;
+                    `<font size="2px" Style="font-weight: 100;"><a style="color: #ffffff" href="https://etherscan.io/address/${address}" target="_blank">${address}</a></br>^ Has</font> <font size="3" style="color: #ff3c00f8; font-weight: 600;">${web3.utils.fromWei(result, 'ether')} SHUF</font>  </br></br>`;
                 console.log('@@@', h);
                 $('#myBalances').append(h);
             });
