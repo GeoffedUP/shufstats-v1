@@ -2,104 +2,133 @@
 <html>
 
 <head>
-  <script>
-    function fetchJson() {
-      var xhr = new XMLHttpRequest();
+  <%= require('html-loader!./templates/head.html') %>
 
-      // set a callback for when the json is loaded
-      xhr.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) { // if json loaded successfully
 
-          var data = JSON.parse(this.responseText);
-
-          // do stuff with data
-          document.querySelector("#apiVersion").innerText = data["apiVersion"];
-          document.querySelector("#name").innerText = data["name"];
-          document.querySelector("#symbol").innerText = data["symbol"];
-          document.querySelector("#contractUrl").innerText = data["contractUrl"];
-          document.querySelector("#contractAddress").innerText = data["contractAddress"];
-          document.querySelector("#decimals").innerText = data["decimals"];
-          document.querySelector("#initialSupply").innerText = data["initialSupply"];
-          document.querySelector("#circulatingSupplyReadable").innerText = data["circulatingSupplyReadable"];
-          document.querySelector("#circulatingSupply").innerText = data["circulatingSupply"];
-          document.querySelector("#tokensBurned").innerText = data["tokensBurned"];
-          document.querySelector("#heapSize").innerText = data["heapSize"];
-          document.querySelector("#lastHeapAddress").innerText = data["heapTopAddress"];
-          document.querySelector("#lastHeapAmountReadable").innerText = data["heapTopAmountReadable"];
-          document.querySelector("#lastHeapAmount").innerText = data["heapTopAmount"];
-          document.querySelector("#currentEthBlock").innerText = data["currentEthBlock"];
-        }
-      };
-
-      // fetch the json
-      xhr.open("GET", "http://167.71.121.133/api/shuf", true);
-      xhr.send();
-    }
-    window.onload = function () {
-      fetchJson();
-    };
-  </script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Shuffle Monster Token api fetchJson() example.</title>
-  <link rel="icon" type="image/icon" href="/app/assets/img/eyeball.ico" />
-  <html lang="en">
-  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
 
 
 </head>
 
 
 <body>
-  <!-- insert data into <body> start -->
-  <div class="container bg-dark tab-content shadow p3 mb-5 rounded">
+  <%= require('html-loader!./templates/navbar-header.html') %>
 
-    <font style="color: #fff">
-      <br><br>
 
-      <h2><a class="nav-item" href="https://shuffle.monster" target="_blank">
-          <img src="../app/assets/img/spinning-eyes.gif" class="shadow hover-effects" style="border-radius: 50% "
-            height="50" width="50"></a>SHUF- Shuffle Monster Token api <kbd>fetchJson()</kbd> example.</h2>
 
-      <p>Version: <font id="apiVersion">loading...</font>
-      </p>
-      <p>Name: <font id="name">loading...</font>
-      </p>
-      <p>Symbol: <font id="symbol">loading...</font>
-      </p>
-      <p>Contract URL: <font id="contractUrl">loading...</font>
-      </p>
-      <p>Contract Address: <font id="contractAddress">loading...</font>
-      </p>
-      <p>Decimals: <font id="decimals">loading...</font>
-      </p>
-      <p>Initial Supply: <font id="initialSupply">loading...</font>
-      </p>
-      <p>Current Circulating Supply(readable): <font id="circulatingSupplyReadable">loading...</font>
-      </p>
-      <p>Current Circulating Supply(uint256): <font id="circulatingSupply">loading...</font>
-      </p>
-      <p>Token Burned (readable): <font id="tokensBurned">loading...</font>
-      </p>
-      <p>Current Heap Size: <font id="heapSize">loading...</font> / 512</p>
-      <p>Last address on the Heap (lowest): <font id="lastHeapAddress">loading...</font>
-      </p>
-      <p>Amount of tokens the last spot holds(readable): :<font id="lastHeapAmountReadable">loading...</font>
-      </p>
-      <p>Amount of tokens the last spot holds(uint256): <font id="lastHeapAmount">loading...</font>
-      </p>
-      <p>Current Ethereum Block #: <font id="currentEthBlock">loading...</font>
-      </p>
+  <div class="flex-container"
+    style="background: url(/app/assets/img/greenbg-og.png) center repeat; background-size: cover; width: 100%;">
+
+    <!-- insert data into <body> start -->
+    <div>
+
+
+        <br><br>
+<font size="2">
+        <h5><a class="nav-item" href="https://shuffle.monster" target="_blank">
+            <img src="../app/assets/img/spinning-eyes.gif" class="shadow hover-effects" style="border-radius: 50% "
+              height="50" width="50"></a>SHUF- Shuffle Monster Token api <kbd>fetchJson()</kbd> example.</h5>
+
+        <p>
+          <font style="color: #ffd000">Version:</font> <span id="apiVersion">loading...</span>
+        </p>
+
+
+
+        <p>
+          <font style="color: #ffd000">Name:</font> <span id="name">loading...</span>
+        </p>
+
+
+
+        <p>
+          <font style="color: #ffd000">Symbol:</font> <span id="symbol">loading...</span>
+        </p>
+
+
+
+        <p>
+          <font style="color: #ffd000">Contract URL:</font> <span id="contractUrl">loading...</span>
+        </p>
+
+        <p>
+          <font style="color: #ffd000">Contract Address:</font> <span id="contractAddress">loading...</span>
+        </p>
+
+
+
+        <p>
+          <font style="color: #ffd000">Decimals:</font> <span id="decimals">loading...</span>
+        </p>
+
+
+
+        <p>
+          <font style="color: #ffd000">Initial Supply:</font> <span id="initialSupply">loading...</span>
+        </p>
+
+
+
+        <p>
+          <font style="color: #ffd000">Current Circulating Supply(readable):</font> <span
+            id="circulatingSupplyReadable">loading...</span>
+        </p>
+
+
+
+        <p>
+          <font style="color: #ffd000">Current Circulating Supply(uint256):</font> <span
+            id="circulatingSupply">loading...</span>
+        </p>
+
+
+
+        <p>
+          <font style="color: #ffd000">Token Burned (readable):</font> <span id="tokensBurned">loading...</span>
+        </p>
+
+
+
+        <p>
+          <font style="color: #ffd000">Current Heap Size:</font> <span id="heapSize">loading...</span> / 512
+        </p>
+
+
+
+        <p>
+          <font style="color: #ffd000">Last address on the Heap (lowest):</font> <span
+            id="lastHeapAddress">loading...</span>
+        </p>
+
+
+
+        <p>
+          <font style="color: #ffd000">Amount of tokens the last spot holds(readable): :<span
+              id="lastHeapAmountReadable">loading...</span>
+        </p>
+
+
+
+        <p>
+          <font style="color: #ffd000">Amount of tokens the last spot holds(uint256):</font> <span
+            id="lastHeapAmount">loading...</span>
+        </p>
+
+
+
+        <p>
+          <font style="color: #ffd000">Current Ethereum Block #:</font> <span id="currentEthBlock">loading...</span>
+        </p>
+   
       <br><br><br>
-      <h1 align="center"><kbd>fetchJson(); XMLHttpRequest();</kbd> page code below</h1>
+      <h5 align="center"><kbd>fetchJson(); XMLHttpRequest();</kbd> page code below</h5>
     </font>
-    </font>
-    <script src="https://gist.github.com/GeoffedUP/13a88af4843b13a81044bb37249c0480.js"></script>
+      <div>
+        <script src="https://gist.github.com/GeoffedUP/13a88af4843b13a81044bb37249c0480.js"></script>
+      </div>
+    </div>
   </div>
-  <!-- insert data into </body> end -->
+
 </body>
+
 
 </html>

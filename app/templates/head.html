@@ -1,5 +1,5 @@
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
-
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
   integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -49,6 +49,7 @@
 
 <link rel="icon" type="image/icon" href="/app/assets/img/eyeball.ico" />
 
+<script src="https://kit.fontawesome.com/6e91a3b975.js" crossorigin="anonymous"></script>
 <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
 
@@ -58,3 +59,41 @@
 <style>
   @import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
 </style>
+
+<script>
+  function fetchJson() {
+    var xhr = new XMLHttpRequest();
+
+    // set a callback for when the json is loaded
+    xhr.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) { // if json loaded successfully
+
+        var data = JSON.parse(this.responseText);
+
+        // do stuff with data
+        document.querySelector("#apiVersion").innerText = data["apiVersion"];
+        document.querySelector("#name").innerText = data["name"];
+        document.querySelector("#symbol").innerText = data["symbol"];
+        document.querySelector("#contractUrl").innerText = data["contractUrl"];
+        document.querySelector("#contractAddress").innerText = data["contractAddress"];
+        document.querySelector("#decimals").innerText = data["decimals"];
+        document.querySelector("#initialSupply").innerText = data["initialSupply"];
+        document.querySelector("#circulatingSupplyReadable").innerText = data["circulatingSupplyReadable"];
+        document.querySelector("#circulatingSupply").innerText = data["circulatingSupply"];
+        document.querySelector("#tokensBurned").innerText = data["tokensBurned"];
+        document.querySelector("#heapSize").innerText = data["heapSize"];
+        document.querySelector("#lastHeapAddress").innerText = data["heapTopAddress"];
+        document.querySelector("#lastHeapAmountReadable").innerText = data["heapTopAmountReadable"];
+        document.querySelector("#lastHeapAmount").innerText = data["heapTopAmount"];
+        document.querySelector("#currentEthBlock").innerText = data["currentEthBlock"];
+      }
+    };
+
+    // fetch the json
+    xhr.open("GET", "https://api2.shuffle.monster", true);
+    xhr.send();
+  }
+  window.onload = function () {
+    fetchJson();
+  };
+</script>

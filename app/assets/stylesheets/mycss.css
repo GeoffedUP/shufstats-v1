@@ -81,18 +81,8 @@ nav {
   background: #001302a8;
 }
 
-nav {
-  /* background-color: #000e01; */
-  /* background-image: url(.\..\img\MediumBanner-600x200-2.png);
-  background-color: #cccccc;
-  height: 100px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative; */
-}
 
-/* Style the top navigation bar */
+
 .navbar {
   display: flex;
   background-color: #001302a8;
@@ -156,26 +146,34 @@ body {
   color: #ffffff;
 }
 
+p {
+  word-wrap: break-word;
+    flex-shrink: 5;
+}
 
 .flex-container {
   display: flex;
+  flex-shrink: 5;
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
+  margin: 1px;
   flex-flow: row wrap;
   align-content: space-around;
-  background-color: transparent;
-}
+ }
 
-.flex-container>div {
-  background-color: transparent;
-  width: 100%;
+.flex-container > div {
+  width: 85%;
+  background: #051800bd;
+  border: 2px solid #051800; 
+  flex-shrink: 5;
+  padding: 10px 10px 10px 10px;
   flex-wrap: wrap;
+  justify-content: center;
   height: 100%;
   flex-flow: row wrap;
-  margin: 10px;
-  text-align: left;
-}
+  margin: 1px;
+  text-align: left; }
 
 a {
   color: #ffd000;
@@ -207,6 +205,8 @@ h3 {
 
 h4 {
   font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  color: #ffd000;
 }
 
 h5 {
